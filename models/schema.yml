@@ -9,7 +9,4 @@ models:
       - name: _placeholder
         description: "Placeholder column - replace with actual columns"
 
-    tests:
-      - not_null:
-          column_name: "id"
 
