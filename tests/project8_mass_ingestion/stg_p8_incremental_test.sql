@@ -16,7 +16,7 @@ select
         when count(*) = count(distinct {{ entity }}_key) then 'PASS'
         else 'FAIL'
     end as result
-from {{ ref('stg_incremental_source') }}
+from {{ ref('stg_p8_incremental_source') }}
 where entity = '{{ entity }}'
 
 {% if not loop.last %}union all{% endif %}

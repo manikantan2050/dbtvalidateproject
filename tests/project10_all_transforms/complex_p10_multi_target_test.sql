@@ -1,8 +1,8 @@
--- Jinjaneering validation test for Incremental Staging Load
--- Pattern: stg_incremental
+-- Jinjaneering validation test for Complex Multi-Target Router
+-- Pattern: complex_multi_target
 -- Tests: Primary key uniqueness and not-null constraints
 
-{% set entities = var('stg_incremental_entities', []) %}
+{% set entities = var('complex_multi_target_entities', []) %}
 
 {% for entity in entities %}
 
@@ -16,7 +16,7 @@ select
         when count(*) = count(distinct {{ entity }}_key) then 'PASS'
         else 'FAIL'
     end as result
-from {{ ref('stg_incremental_source') }}
+from {{ ref('complex_p10_multi_target') }}
 where entity = '{{ entity }}'
 
 {% if not loop.last %}union all{% endif %}
