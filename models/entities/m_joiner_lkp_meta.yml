@@ -1,0 +1,47 @@
+# Jinjaneering metadata config
+# Entity: m_joiner_lkp
+# Generated automatically from IICS mapping analysis
+
+entity: m_joiner_lkp
+source:
+  database: Source
+  schema: public
+  table: Source
+target:
+  schema: IDMC_Target
+  model: IDMC_Target
+keys:
+  primary: [ORDER_ID]
+  business: [ORDER_ID, CUSTOMER_ID]
+fields:
+  tracked: [CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE, ORDER_ID]
+  source: [ORDER_ID, CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE, ORDER_ID, CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE, AuditRunDate]
+load:
+  type: full
+  incremental_column: null
+joins:
+  - type: inner
+    join_type: joiner
+    keys: [ORDER_ID, CUSTOMER_ID]
+  - type: left
+    join_type: lookup
+    keys: [ORDER_ID]
+  - type: left
+    join_type: lookup
+    keys: [CUSTOMER_ID]
+  - type: left
+    join_type: lookup
+    keys: [STATUS]
+  - type: left
+    join_type: lookup
+    keys: [SALESMAN_ID]
+  - type: left
+    join_type: lookup
+    keys: [ORDER_DATE]
+  - type: left
+    join_type: lookup
+    keys: [AuditRunDate]
+  - type: additional_source
+    name: Source1
+    source_system: Source1
+    fields: [ORDER_ID, CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE, AuditRunDate]

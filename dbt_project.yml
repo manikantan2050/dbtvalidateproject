@@ -1,15 +1,29 @@
-name: dbtvalidateproject
+name: 'jinjaneering_migration'
 version: '1.0.0'
 config-version: 2
-profile: dbtvalidateproject
-model-paths:
-  - models
-test-paths:
-  - tests
-macro-paths:
-  - macros
+
+profile: 'jinjaneering'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
 clean-targets:
-  - target
-  - dbt_packages
+  - "target"
+  - "dbt_packages"
+
 vars:
-  pk_field: id
+  load_date: "{{ run_started_at }}"
+  environment: "{{ target.name }}"
+
+models:
+  jinjaneering_migration:
+    patterns:
+      +schema: transform
+      +tags: ['jinjaneering', 'pattern']
+    entities:
+      +schema: entity_config

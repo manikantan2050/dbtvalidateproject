@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: joiner_lookup
+    description: "Joiner + Lookup Enrichment - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'joiner_lookup']
+    columns:
+      # Entity: m_joiner_lkp
+    tests:
+      - not_null
+      - unique:
+          column_name: "{{ pk_field }}"
+
