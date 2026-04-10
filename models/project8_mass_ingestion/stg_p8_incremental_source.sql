@@ -1,37 +1,34 @@
 {{ config(
-    materialized='incremental',
-    unique_key='{{ pk_field }}',
-    incremental_strategy='merge'
-) }}
+      materialized='incremental',
+      unique_key='employee_id',
+      incremental_strategy='merge'
+  ) }}
 
-{# Jinjaneering: Incremental staging pattern #}
-{# Entity: {{ entity }} | Source: {{ src_db }}.{{ src_table }} #}
+  {# Jinjaneering: Incremental staging pattern for M_Mass_Ingestion #}
 
-with source as (
-    select * from {{ source('idmc_source_p8', 'source_p8') }}
-    {% if is_incremental() %}
-    where {{ incremental_column }} > (
-        select max({{ incremental_column }}) from {{ this }}
-    )
-    {% endif %}
-),
+  with source as (
+      select
+          employee_id,
+        first_name,
+        last_name,
+        department,
+        job_title
+      from {{ source('idmc_source_p8', 'source_p8') }}
+      {% if is_incremental() %}
+      where updated_at > (select max(updated_at) from {{ this }})
+      {% endif %}
+  ),
 
-filtered as (
-    select *
-    from source
-    {% if filter_condition %}
-    where {{ filter_condition }}
-    {% endif %}
-),
+  final as (
+      select
+          employee_id,
+        first_name,
+        last_name,
+        department,
+        job_title,
+          current_timestamp as loaded_at
+      from source
+  )
 
-cleansed as (
-    select
-        {{ pk_field }},
-        {% for f in source_fields %}
-        {% if f.expr %}{{ f.expr }} as {{ f.name }}{% else %}{{ f.name }}{% endif %}{% if not loop.last %},{% endif %}
-        {% endfor %}
-        current_timestamp() as etl_load_dts
-    from filtered
-)
-
-select * from cleansed
+  select * from final
+  
