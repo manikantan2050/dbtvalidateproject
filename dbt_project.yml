@@ -1,8 +1,7 @@
-name: 'dbtvalidateproject'
+name: dbtvalidateproject
   version: '1.0.0'
   config-version: 2
-  profile: 'dbtvalidateproject'
-
+  profile: dbtvalidateproject
   model-paths:
     - models
   test-paths:
