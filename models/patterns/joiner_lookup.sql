@@ -2,45 +2,45 @@
 -- Multi-source join with lookup enrichment
 
 with source_1 as (
-    select ORDER_ID, CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE
+    select order_id, customer_id, status, salesman_id, order_date
     from {{ source('source_db', 'src_employees') }}
 ),
 
 source_2 as (
-    select ORDER_ID, CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE, AuditRunDate
+    select order_id, customer_id, status, salesman_id, order_date, auditrunddate
     from {{ source('source_db', 'src_users') }}
 ),
 
 joined as (
     select
-        s1.ORDER_ID as s1_ORDER_ID,
-        s1.CUSTOMER_ID as s1_CUSTOMER_ID,
-        s1.STATUS as s1_STATUS,
-        s1.SALESMAN_ID as s1_SALESMAN_ID,
-        s1.ORDER_DATE as s1_ORDER_DATE,
-        s2.ORDER_ID as s2_ORDER_ID,
-        s2.CUSTOMER_ID as s2_CUSTOMER_ID,
-        s2.STATUS as s2_STATUS,
-        s2.SALESMAN_ID as s2_SALESMAN_ID,
-        s2.ORDER_DATE as s2_ORDER_DATE,
-        s2.AuditRunDate as s2_AuditRunDate
+        s1.order_id as s1_order_id,
+        s1.customer_id as s1_customer_id,
+        s1.status as s1_status,
+        s1.salesman_id as s1_salesman_id,
+        s1.order_date as s1_order_date,
+        s2.order_id as s2_order_id,
+        s2.customer_id as s2_customer_id,
+        s2.status as s2_status,
+        s2.salesman_id as s2_salesman_id,
+        s2.order_date as s2_order_date,
+        s2.auditrunddate as s2_auditrunddate
     from source_1 s1
     inner join source_2 s2
-        on s1.ORDER_ID = s2.ORDER_ID and s1.CUSTOMER_ID = s2.CUSTOMER_ID
+        on s1.order_id = s2.order_id and s1.customer_id = s2.customer_id
 ),
 
 enriched as (
     select
         j.*,
-        lkp.ORDER_ID as lkp_ORDER_ID,
-        lkp.CUSTOMER_ID as lkp_CUSTOMER_ID,
-        lkp.STATUS as lkp_STATUS,
-        lkp.SALESMAN_ID as lkp_SALESMAN_ID,
-        lkp.ORDER_DATE as lkp_ORDER_DATE,
-        lkp.AuditRunDate as lkp_AuditRunDate
+        lkp.order_id as lkp_order_id,
+        lkp.customer_id as lkp_customer_id,
+        lkp.status as lkp_status,
+        lkp.salesman_id as lkp_salesman_id,
+        lkp.order_date as lkp_order_date,
+        lkp.auditrunddate as lkp_auditrunddate
     from joined j
     left join {{ source('source_db', 'lkp_users') }} lkp
-        on j.s1_ORDER_ID = lkp.ORDER_ID and j.s1_CUSTOMER_ID = lkp.CUSTOMER_ID
+        on j.s1_order_id = lkp.order_id and j.s1_customer_id = lkp.customer_id
 )
 
 select *, current_timestamp as etl_load_dts
