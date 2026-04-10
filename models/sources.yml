@@ -1,12 +1,11 @@
 version: 2
 
 sources:
-  - name: Source
-    database: Source
+  - name: source_db
     schema: public
     tables:
-      - name: Source
-        description: "Source table for m_joiner_lkp"
+      - name: src_employees
+        description: "Primary source table for m_joiner_lkp"
         columns:
           - name: ORDER_ID
             tests:
@@ -23,43 +22,13 @@ sources:
           - name: ORDER_DATE
             tests:
               - not_null
-      - name: lkp_order_id
-        description: "Lookup table for m_joiner_lkp"
+      - name: lkp_users
+        description: "Lookup reference table for m_joiner_lkp"
         columns:
           - name: ORDER_ID
             tests:
               - not_null
-      - name: lkp_customer_id
-        description: "Lookup table for m_joiner_lkp"
-        columns:
-          - name: CUSTOMER_ID
-            tests:
-              - not_null
-      - name: lkp_status
-        description: "Lookup table for m_joiner_lkp"
-        columns:
-          - name: STATUS
-            tests:
-              - not_null
-      - name: lkp_salesman_id
-        description: "Lookup table for m_joiner_lkp"
-        columns:
-          - name: SALESMAN_ID
-            tests:
-              - not_null
-      - name: lkp_order_date
-        description: "Lookup table for m_joiner_lkp"
-        columns:
-          - name: ORDER_DATE
-            tests:
-              - not_null
-      - name: lkp_auditrundate
-        description: "Lookup table for m_joiner_lkp"
-        columns:
-          - name: AuditRunDate
-            tests:
-              - not_null
-      - name: source1
+      - name: src_users
         description: "Additional source (Source1) for m_joiner_lkp"
         columns:
           - name: ORDER_ID
