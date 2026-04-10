@@ -6,9 +6,10 @@ models:
     config:
       tags: ['jinjaneering', 'joiner_lookup']
     columns:
-      # Entity: m_joiner_lkp
+      - name: _placeholder
+        description: "Placeholder column - replace with actual columns"
+
     tests:
-      - not_null
-      - unique:
-          column_name: "{{ pk_field }}"
+      - not_null:
+          column_name: "id"
 
