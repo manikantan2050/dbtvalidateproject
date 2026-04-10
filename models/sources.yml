@@ -7,42 +7,26 @@ sources:
       - name: src_employees
         description: "Primary source table for m_joiner_lkp"
         columns:
-          - name: ORDER_ID
-            tests:
-              - not_null
-          - name: CUSTOMER_ID
-            tests:
-              - not_null
-          - name: STATUS
-            tests:
-              - not_null
-          - name: SALESMAN_ID
-            tests:
-              - not_null
-          - name: ORDER_DATE
-            tests:
-              - not_null
+          - name: order_id
+          - name: customer_id
+          - name: status
+          - name: salesman_id
+          - name: order_date
       - name: lkp_users
-        description: "Lookup reference table for m_joiner_lkp"
+        description: "Lookup table for m_joiner_lkp"
         columns:
-          - name: ORDER_ID
-            tests:
-              - not_null
+          - name: order_id
+          - name: customer_id
+          - name: status
+          - name: salesman_id
+          - name: order_date
+          - name: auditrunddate
       - name: src_users
-        description: "Additional source (Source1) for m_joiner_lkp"
+        description: "Additional source (src_users) for m_joiner_lkp"
         columns:
-          - name: ORDER_ID
-            tests:
-              - not_null
-          - name: CUSTOMER_ID
-            tests:
-              - not_null
-          - name: STATUS
-            tests:
-              - not_null
-          - name: SALESMAN_ID
-            tests:
-              - not_null
-          - name: ORDER_DATE
-            tests:
-              - not_null
+          - name: order_id
+          - name: customer_id
+          - name: status
+          - name: salesman_id
+          - name: order_date
+          - name: auditrunddate

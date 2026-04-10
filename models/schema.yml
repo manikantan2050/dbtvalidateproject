@@ -6,7 +6,19 @@ models:
     config:
       tags: ['jinjaneering', 'joiner_lookup']
     columns:
-      - name: _placeholder
-        description: "Placeholder column - replace with actual columns"
+      - name: ORDER_ID
+        description: "Field ORDER_ID"
+
+      - name: CUSTOMER_ID
+        description: "Field CUSTOMER_ID"
+
+      - name: STATUS
+        description: "Field STATUS"
+
+      - name: SALESMAN_ID
+        description: "Field SALESMAN_ID"
+
+      - name: ORDER_DATE
+        description: "Field ORDER_DATE"
 
 

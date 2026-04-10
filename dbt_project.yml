@@ -22,8 +22,5 @@ vars:
 
 models:
   jinjaneering_migration:
-    patterns:
-      +schema: transform
-      +tags: ['jinjaneering', 'pattern']
-    entities:
-      +schema: entity_config
+    +materialized: table
+    +tags: ['jinjaneering']
