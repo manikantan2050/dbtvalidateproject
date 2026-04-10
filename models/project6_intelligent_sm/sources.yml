@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: IDMC_Source
+    database: IDMC_Source
+    schema: public
+    tables:
+      - name: IDMC_Source
+        description: "Source table for m_Intelligent_sm"
+        columns:
+          - name: Path
+            tests:
+              - not_null

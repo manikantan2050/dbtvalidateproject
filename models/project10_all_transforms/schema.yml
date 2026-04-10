@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: complex_multi_target
+    description: "Complex Multi-Target Router - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'complex_multi_target']
+    columns:
+      # Entity: m_AllTransformationMapping
+    tests:
+      - not_null
+      - unique:
+          column_name: "{{ pk_field }}"
+
+  - name: stg_incremental_source
+    description: "Incremental Staging Load - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']
+    columns:
+      # Entity: mplt_QuaterlySal
+    tests:
+      - not_null
+      - unique:
+          column_name: "{{ pk_field }}"
+

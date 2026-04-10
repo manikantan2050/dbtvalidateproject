@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_incremental_source
+    description: "Incremental Staging Load - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']
+    columns:
+      # Entity: m_Dynamic_Mapping_Task
+    tests:
+      - not_null
+      - unique:
+          column_name: "{{ pk_field }}"
+

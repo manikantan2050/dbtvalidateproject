@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: IDMC_Source
+    database: IDMC_Source
+    schema: public
+    tables:
+      - name: IDMC_Source
+        description: "Source table for M_Mass_Ingestion"
+        columns:
+          - name: employee_id
+            tests:
+              - not_null
+          - name: first_name
+            tests:
+              - not_null
+          - name: last_name
+            tests:
+              - not_null
+          - name: department
+            tests:
+              - not_null
+          - name: job_title
+            tests:
+              - not_null

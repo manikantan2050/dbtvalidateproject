@@ -1,0 +1,21 @@
+# Jinjaneering metadata config
+# Entity: m_hierarchyparser
+# Generated automatically from IICS mapping analysis
+
+entity: m_hierarchyparser
+source:
+  database: IDMC_Source
+  schema: public
+  table: IDMC_Source
+target:
+  schema: IDMC_Target
+  model: IDMC_Target
+keys:
+  primary: [FIELD1]
+  business: [FIELD1]
+fields:
+  tracked: []
+  source: [FIELD1]
+load:
+  type: incremental
+  incremental_column: LAST_UPD_TS
