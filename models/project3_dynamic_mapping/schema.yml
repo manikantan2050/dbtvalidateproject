@@ -1,7 +1,6 @@
 version: 2
-  models:
-    - name: stg_p3_incremental_source
-      description: "Incremental Staging Load - Jinjaneering generated pattern model"
-      config:
-        tags: ['jinjaneering', 'stg_incremental']
-  
+models:
+  - name: stg_p3_incremental_source
+    description: "Incremental Staging Load - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']

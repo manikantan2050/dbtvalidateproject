@@ -1,7 +1,6 @@
 version: 2
-  models:
-    - name: lookup_enrichment
-      description: "Lookup Enrichment - Jinjaneering generated pattern model"
-      config:
-        tags: ['jinjaneering', 'lookup_enrichment']
-  
+models:
+  - name: lookup_enrichment
+    description: "Lookup Enrichment - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'lookup_enrichment']
