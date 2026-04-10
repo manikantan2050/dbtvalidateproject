@@ -1,14 +1,12 @@
 version: 2
 
-models:
-  - name: stg_incremental_source
-    description: "Incremental Staging Load - Jinjaneering generated pattern model"
-    config:
-      tags: ['jinjaneering', 'stg_incremental']
-    columns:
-      # Entity: M_Transactional_Control
-    tests:
-      - not_null
-      - unique:
-          column_name: "{{ pk_field }}"
-
+  models:
+    - name: stg_p7_incremental_source
+      description: "Incremental Staging Load - Jinjaneering generated pattern model"
+      config:
+        tags: ['jinjaneering', 'stg_incremental']
+      tests:
+        - not_null
+        - unique:
+            column_name: "id"
+  

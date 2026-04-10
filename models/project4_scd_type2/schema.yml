@@ -1,14 +1,12 @@
 version: 2
 
-models:
-  - name: complex_multi_target
-    description: "Complex Multi-Target Router - Jinjaneering generated pattern model"
-    config:
-      tags: ['jinjaneering', 'complex_multi_target']
-    columns:
-      # Entity: m_SCD_Type2
-    tests:
-      - not_null
-      - unique:
-          column_name: "{{ pk_field }}"
-
+  models:
+    - name: complex_p4_multi_target
+      description: "Complex Multi-Target Router - Jinjaneering generated pattern model"
+      config:
+        tags: ['jinjaneering', 'complex_multi_target']
+      tests:
+        - not_null
+        - unique:
+            column_name: "id"
+  
