@@ -12,7 +12,7 @@ with source as (
         {% for f in source_fields %}
         {{ f.name }}{% if not loop.last %},{% endif %}
         {% endfor %}
-    from {{ source('{{ src_db }}', '{{ src_table }}') }}
+    from {{ source('idmc_source_p4', 'source_p4') }}
 ),
 
 converted as (

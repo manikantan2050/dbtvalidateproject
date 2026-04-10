@@ -12,7 +12,7 @@ with source as (
         {% for f in source_fields %}
         {{ f.name }}{% if not loop.last %},{% endif %}
         {% endfor %}
-    from {{ source('{{ src_db }}', '{{ src_table }}') }}
+    from {{ source('idmc_source_p10', 'source_p10') }}
 ),
 
 converted as (
@@ -37,7 +37,7 @@ enriched as (
         datediff(day, c.hire_date_dt, current_date()) as days_in_org,
         round(c.salary_dec * 3, 2) as quarterly_salary
     from converted c
-    left join {{ source('{{ src_db }}', 'department') }} dept
+    left join {{ source('idmc_source_p10', 'source_p10_mapplet') }} dept
         on c.department = dept.department_name
 ),
 

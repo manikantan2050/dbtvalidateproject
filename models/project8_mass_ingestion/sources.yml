@@ -1,11 +1,9 @@
 version: 2
-
 sources:
-  - name: IDMC_Source
-    database: IDMC_Source
+  - name: idmc_source_p8
     schema: public
     tables:
-      - name: IDMC_Source
+      - name: source_p8
         description: "Source table for M_Mass_Ingestion"
         columns:
           - name: employee_id

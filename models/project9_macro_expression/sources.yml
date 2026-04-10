@@ -1,11 +1,9 @@
 version: 2
-
 sources:
-  - name: IDMC_Source
-    database: IDMC_Source
+  - name: idmc_source_p9
     schema: public
     tables:
-      - name: IDMC_Source
+      - name: source_p9
         description: "Source table for m_MacroExpression"
         columns:
           - name: EMPLOYEE_ID

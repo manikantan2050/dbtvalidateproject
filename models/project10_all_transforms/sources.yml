@@ -1,11 +1,9 @@
 version: 2
-
 sources:
-  - name: IDMC_Source
-    database: IDMC_Source
+  - name: idmc_source_p10
     schema: public
     tables:
-      - name: IDMC_Source
+      - name: source_p10
         description: "Source table for m_AllTransformationMapping"
         columns:
           - name: employee_id
@@ -23,11 +21,7 @@ sources:
           - name: phone
             tests:
               - not_null
-  - name: Mapplet
-    database: Mapplet
-    schema: public
-    tables:
-      - name: Mapplet
+      - name: source_p10_mapplet
         description: "Source table for mplt_QuaterlySal"
         columns:
           - name: Salary

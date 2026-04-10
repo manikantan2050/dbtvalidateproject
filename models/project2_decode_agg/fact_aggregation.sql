@@ -6,7 +6,7 @@
 {# Entity: {{ entity }} | Source: {{ src_db }}.{{ src_table }} #}
 
 with source as (
-    select * from {{ source('{{ src_db }}', '{{ src_table }}') }}
+    select * from {{ source('idmc_source_p2', 'source_p2') }}
     {% if filter_condition %}
     where {{ filter_condition }}
     {% endif %}

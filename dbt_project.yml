@@ -11,3 +11,5 @@ macro-paths:
 clean-targets:
   - target
   - dbt_packages
+vars:
+  pk_field: id

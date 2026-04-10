@@ -8,7 +8,7 @@
 {# Entity: {{ entity }} | Source: {{ src_db }}.{{ src_table }} #}
 
 with source as (
-    select * from {{ source('{{ src_db }}', '{{ src_table }}') }}
+    select * from {{ source('idmc_source_p8', 'source_p8') }}
     {% if is_incremental() %}
     where {{ incremental_column }} > (
         select max({{ incremental_column }}) from {{ this }}
