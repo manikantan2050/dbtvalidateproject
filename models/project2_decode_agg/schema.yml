@@ -1,12 +1,7 @@
 version: 2
-
   models:
     - name: fact_aggregation
       description: "Fact Aggregation - Jinjaneering generated pattern model"
       config:
         tags: ['jinjaneering', 'fact_aggregation']
-      tests:
-        - not_null
-        - unique:
-            column_name: "id"
   

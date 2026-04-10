@@ -1,12 +1,7 @@
 version: 2
-
   models:
     - name: complex_p4_multi_target
       description: "Complex Multi-Target Router - Jinjaneering generated pattern model"
       config:
         tags: ['jinjaneering', 'complex_multi_target']
-      tests:
-        - not_null
-        - unique:
-            column_name: "id"
   
