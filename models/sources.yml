@@ -2,32 +2,12 @@ version: 2
 
 sources:
   - name: source_db
-    description: "Neon PostgreSQL source database"
+    description: "Neon PostgreSQL warehouse for IICS migration"
     schema: public
     tables:
       - name: src_employees
-        description: "Source 1 - Employee orders (88 rows)"
-        columns:
-          - name: order_id
-          - name: customer_id
-          - name: status
-          - name: salesman_id
-          - name: order_date
+        description: "Source (Master) - SRC_employees.csv (88 rows, 5 columns)"
       - name: src_users
-        description: "Source 2 - User orders with audit dates (106 rows)"
-        columns:
-          - name: order_id
-          - name: customer_id
-          - name: status
-          - name: salesman_id
-          - name: order_date
-          - name: auditrunddate
+        description: "Source1 (Detail) - SRC_users.csv (106 rows, 6 columns)"
       - name: lkp_users
-        description: "Lookup reference table (106 rows)"
-        columns:
-          - name: order_id
-          - name: customer_id
-          - name: status
-          - name: salesman_id
-          - name: order_date
-          - name: auditrunddate
+        description: "Lookup - LKP_users.csv (106 rows, 6 columns)"
