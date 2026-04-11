@@ -1,75 +1,47 @@
--- Joiner + Lookup Transformation (IICS m_joiner_lkp)
--- Source (Master): src_employees -> Joiner
--- Source1 (Detail): src_users -> Joiner
--- Joiner: INNER JOIN on ORDER_ID, CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE
--- Lookup: lkp_users on ORDER_ID -> brings AuditRunDate
--- Target: Tgt_Employees (ORDER_ID, CUSTOMER_ID, STATUS, SALESMAN_ID, ORDER_DATE, AuditRunDate)
+-- Joiner + Lookup Enrichment
+-- Pattern: joiner_lookup
+-- Entity: m_joiner_lkp
 
 {{ config(
     materialized='view'
 ) }}
 
-with src_master as (
-    -- Source (Master side of Joiner) = SRC_employees.csv
-    select
-        order_id,
-        customer_id,
-        status,
-        salesman_id,
-        order_date
+with source_1 as (
+    select order_id, customer_id, status, salesman_id, order_date
     from {{ source('source_db', 'src_employees') }}
 ),
 
-src_detail as (
-    -- Source1 (Detail side of Joiner) = SRC_users.csv
-    select
-        order_id,
-        customer_id,
-        status,
-        salesman_id,
-        order_date,
-        auditrunddate
+source_2 as (
+    select order_id, customer_id, status, salesman_id, order_date, auditrunddate
     from {{ source('source_db', 'src_users') }}
 ),
 
-joiner_output as (
-    -- Joiner: INNER JOIN Master + Detail on all 5 common keys
+joined as (
     select
-        m.order_id,
-        m.customer_id,
-        m.status,
-        m.salesman_id,
-        m.order_date
-    from src_master m
-    inner join src_detail d
-        on m.order_id = d.order_id
-        and m.customer_id = d.customer_id
-        and m.status = d.status
-        and m.salesman_id = d.salesman_id
-        and m.order_date = d.order_date
+        s1.order_id,
+        s1.customer_id,
+        s1.status,
+        s1.salesman_id,
+        s1.order_date,
+        s2.order_id as s2_order_id,
+        s2.customer_id as s2_customer_id,
+        s2.status as s2_status,
+        s2.salesman_id as s2_salesman_id,
+        s2.order_date as s2_order_date,
+        s2.auditrunddate as s2_auditrundate
+    from source_1 s1
+    left join source_2 s2
+        on s1.order_id = s2.order_id and s1.customer_id = s2.customer_id and s1.status = s2.status and s1.salesman_id = s2.salesman_id and s1.order_date = s2.order_date
 ),
 
-lookup_enriched as (
-    -- Lookup: LEFT JOIN lkp_users on ORDER_ID to get AuditRunDate
+enriched as (
     select
-        j.order_id,
-        j.customer_id,
-        j.status,
-        j.salesman_id,
-        j.order_date,
-        lkp.auditrunddate as auditrundate
-    from joiner_output j
+        j.*,
+        lkp.order_id as lkp_order_id
+    from joined j
     left join {{ source('source_db', 'lkp_users') }} lkp
         on j.order_id = lkp.order_id
 )
 
--- Target: Tgt_Employees
-select
-    order_id,
-    customer_id,
-    status,
-    salesman_id,
-    order_date,
-    auditrundate,
-    current_timestamp as etl_load_dts
-from lookup_enriched
+select *, current_timestamp as etl_load_dts
+from enriched
