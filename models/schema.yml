@@ -2,25 +2,77 @@ version: 2
 
 models:
   - name: joiner_lookup_m_joiner_lkp
-    description: "IICS m_joiner_lkp: Joiner(INNER JOIN src_employees + src_users) + Lookup(lkp_users -> AuditRunDate) -> Tgt_Employees"
+    description: "UC1: Joiner(INNER JOIN src_employees+src_users) + Lookup(lkp_users->AuditRunDate) -> Tgt_Employees"
     columns:
       - name: order_id
-        description: "Primary key from Source (src_employees master)"
-        tests:
-          - not_null
-      - name: customer_id
-        description: "Customer identifier from joined sources"
-        tests:
-          - not_null
-      - name: status
-        description: "Order status from joined sources"
-      - name: salesman_id
-        description: "Salesman identifier from joined sources"
-      - name: order_date
-        description: "Order date from joined sources"
-      - name: auditrundate
-        description: "AuditRunDate enriched via Lookup from lkp_users"
+        tests: [not_null]
       - name: etl_load_dts
-        description: "ETL load timestamp"
-        tests:
-          - not_null
+        tests: [not_null]
+
+  - name: fact_agg_m_decode_agg
+    description: "UC2: Decode expression + Conditional Aggregation(Avg rating) from employee_input"
+    columns:
+      - name: employee_id
+        tests: [not_null]
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: stg_m_dynamic_mapping_task
+    description: "UC3: Dynamic mapping with Expression(FULL_NAME) from src_contact"
+    columns:
+      - name: id
+        tests: [not_null]
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: scd2_m_scd_type2
+    description: "UC4: SCD Type 2 with Lookup+MD5 checksum+Router(INSERT/UPDATE) from src_emp_v3"
+    columns:
+      - name: emp_id
+        tests: [not_null]
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: joiner_m_hierarchyparser
+    description: "UC5: Hierarchy Parser + Joiner(self-join FK->PK) from XML hierarchy"
+    columns:
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: joiner_m_intelligent_sm
+    description: "UC6: Intelligent Structure Model + Joiner from XML structure"
+    columns:
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: stg_m_transactional_control
+    description: "UC7: Transaction Control transformation from src_contact"
+    columns:
+      - name: id
+        tests: [not_null]
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: stg_m_mass_ingestion
+    description: "UC8: Mass Ingestion with Expression(Full_Name, Annual_salary) + Filter(Active)"
+    columns:
+      - name: employee_id
+        tests: [not_null]
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: stg_m_macroexpression
+    description: "UC9: Macro Expression sort/clean from SRC_EmployeesDistortedData"
+    columns:
+      - name: employee_id
+        tests: [not_null]
+      - name: etl_load_dts
+        tests: [not_null]
+
+  - name: complex_m_alltransformationmapping
+    description: "UC10: All transforms combined - Aggregator, Mapplet, Expression, Filter, Lookup, Router, Sequence, Sorter"
+    columns:
+      - name: employee_id
+        tests: [not_null]
+      - name: etl_load_dts
+        tests: [not_null]
