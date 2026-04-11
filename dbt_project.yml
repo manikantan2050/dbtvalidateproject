@@ -16,6 +16,9 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+on-run-start:
+  - "DROP TABLE IF EXISTS public.joiner_lookup CASCADE"
+
 vars:
   load_date: "{{ run_started_at }}"
   environment: "{{ target.name }}"
