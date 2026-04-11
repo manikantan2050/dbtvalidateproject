@@ -30,8 +30,8 @@ models:
         description: "Salesman ID from secondary source"
       - name: s2_order_date
         description: "Order date from secondary source"
-      - name: s2_auditrundate
-        description: "Audit run date from secondary source"
+      - name: s2_auditrunddate
+        description: "Audit run date from secondary source (double-d spelling)"
       - name: lkp_order_id
         description: "Order ID from lookup table"
       - name: etl_load_dts
