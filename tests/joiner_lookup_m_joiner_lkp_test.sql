@@ -1,6 +1,6 @@
 -- Test: Verify joiner_lookup_m_joiner_lkp join integrity
--- Ensures all source_2 records are preserved (LEFT JOIN)
--- and lookup enrichment is applied
+-- Ensures all src_users records are preserved (LEFT JOIN from 106 rows)
+-- and lookup enrichment is applied correctly
 
 with validation as (
     select
