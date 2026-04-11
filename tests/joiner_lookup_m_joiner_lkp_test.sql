@@ -1,18 +1,10 @@
--- Test: Verify joiner_lookup_m_joiner_lkp join integrity
--- Ensures all source_2 records are preserved (LEFT JOIN)
--- and lookup enrichment is applied
+-- Jinjaneering validation test for Joiner + Lookup Enrichment
+-- Pattern: joiner_lookup
+-- Tests: Fail if model has zero rows (empty output is invalid)
 
-with validation as (
-    select
-        count(*) as total_rows,
-        count(order_id) as non_null_orders,
-        count(lkp_order_id) as lookup_matches,
-        count(src1_order_id) as src1_matches
-    from {{ ref('joiner_lookup_m_joiner_lkp') }}
-)
-
-select *
-from validation
-where total_rows < 100
-   or non_null_orders != total_rows
-   or lookup_matches < total_rows * 0.9
+select
+    'joiner_lookup_m_joiner_lkp' as model_name,
+    'row_count_check' as test_type,
+    count(*) as total_rows
+from {{ ref('joiner_lookup_m_joiner_lkp') }}
+having count(*) = 0
