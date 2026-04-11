@@ -2,12 +2,32 @@ version: 2
 
 sources:
   - name: source_db
-    description: "Neon PostgreSQL warehouse for IICS migration"
+    description: "Neon PostgreSQL warehouse for IICS migration - all 10 use cases"
     schema: public
     tables:
       - name: src_employees
-        description: "Source (Master) - SRC_employees.csv (88 rows, 5 columns)"
+        description: "UC1 Source (Master) - SRC_employees.csv (88 rows)"
       - name: src_users
-        description: "Source1 (Detail) - SRC_users.csv (106 rows, 6 columns)"
+        description: "UC1 Source1 (Detail) - SRC_users.csv (106 rows)"
       - name: lkp_users
-        description: "Lookup - LKP_users.csv (106 rows, 6 columns)"
+        description: "UC1 Lookup - LKP_users.csv (106 rows)"
+      - name: src_employee_input
+        description: "UC2 Source - employee_input.csv (50 rows)"
+      - name: src_contact
+        description: "UC3/UC7 Source - src_contact.csv (40 rows)"
+      - name: src_emp_v3
+        description: "UC4 Source - Source_EMP_V3 (30 rows)"
+      - name: tgt_scd2_nks
+        description: "UC4 Lookup/Target - TGT_SCD2_NKS existing target (20 rows)"
+      - name: src_hierarchy_xml
+        description: "UC5 Source - List_file_xml_San.txt hierarchy (25 rows)"
+      - name: src_structure_xml
+        description: "UC6 Source - List_file_xml_San.txt structure (25 rows)"
+      - name: src_employee_data
+        description: "UC8 Source - src_employee_data.csv (60 rows)"
+      - name: src_employees_distorted
+        description: "UC9 Source - SRC_EmployeesDistortedData.csv (45 rows)"
+      - name: src_employee_mapping
+        description: "UC10 Source - employee_mapping.csv (55 rows)"
+      - name: lkp_departments
+        description: "UC10 Lookup - department.csv (5 rows)"
