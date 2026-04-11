@@ -1,33 +1,32 @@
 version: 2
 
-  sources:
-    - name: source_db
-      schema: public
-      tables:
-        - name: src_employees
-          description: "Primary source table - employee/order data"
-          columns:
-            - name: order_id
-            - name: customer_id
-            - name: status
-            - name: salesman_id
-            - name: order_date
-        - name: src_users
-          description: "Secondary source table - user/order data with audit"
-          columns:
-            - name: order_id
-            - name: customer_id
-            - name: status
-            - name: salesman_id
-            - name: order_date
-            - name: auditrunddate
-        - name: lkp_users
-          description: "Lookup table for order enrichment"
-          columns:
-            - name: order_id
-            - name: customer_id
-            - name: status
-            - name: salesman_id
-            - name: order_date
-            - name: auditrunddate
-  
+sources:
+  - name: source_db
+    schema: public
+    tables:
+      - name: src_employees
+        description: "Primary source table - employee/order data"
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: status
+          - name: salesman_id
+          - name: order_date
+      - name: src_users
+        description: "Secondary source table - user/order data with audit"
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: status
+          - name: salesman_id
+          - name: order_date
+          - name: auditrunddate
+      - name: lkp_users
+        description: "Lookup table for order enrichment"
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: status
+          - name: salesman_id
+          - name: order_date
+          - name: auditrunddate
