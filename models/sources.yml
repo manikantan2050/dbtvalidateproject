@@ -1,77 +1,33 @@
 version: 2
+
 sources:
   - name: source_db
-    schema: public
-    tables:
-      - name: source
-        description: "Primary source table for M_Mass_Ingestion"
-        columns:
-          - name: employee_id
-          - name: first_name
-          - name: last_name
-          - name: department
-          - name: job_title
-      - name: lkp_lookup
-        description: "Lookup table for m_joiner_lkp"
-        columns:
-          - name: order_id
-      - name: source1
-        description: "Additional source (Source1) for m_joiner_lkp"
-        columns:
-          - name: order_id
-          - name: customer_id
-          - name: status
-          - name: salesman_id
-          - name: order_date
-          - name: auditrunddate
-  - name: Src_Contact
-    schema: public
-    tables:
-      - name: src_contact
-        description: "Primary source table for m_Dynamic_Mapping_Task"
-        columns:
-          - name: id
-          - name: firstname
-          - name: lastname
-          - name: homephone
-          - name: cellphone
-  - name: Mapplet
-    schema: public
-    tables:
-      - name: mapplet
-        description: "Primary source table for mplt_QuaterlySal"
-        columns:
-          - name: salary
-  - name: Src_EmployeesDistortedData
-    schema: public
-    tables:
-      - name: src_employeesdistorteddata
-        description: "Primary source table for m_MacroExpression"
-        columns:
-          - name: employee_id
-          - name: first_name
-          - name: last_name
-          - name: email
-          - name: phone
-  - name: Src_Employees
+    description: "Neon PostgreSQL warehouse for IICS migration - all 10 use cases"
     schema: public
     tables:
       - name: src_employees
-        description: "Primary source table for m_AllTransformationMapping"
-        columns:
-          - name: employee_id
-          - name: first_name
-          - name: last_name
-          - name: email
-          - name: phone
-  - name: Source_EMP_V3
-    schema: public
-    tables:
-      - name: source_emp_v3
-        description: "Primary source table for m_SCD_Type2"
-        columns:
-          - name: emp_id
-          - name: first_name
-          - name: last_name
-          - name: email
-          - name: gender
+        description: "UC1 Source (Master) - SRC_employees.csv (88 rows)"
+      - name: src_users
+        description: "UC1 Source (Detail) - SRC_users.csv (106 rows)"
+      - name: lkp_users
+        description: "UC1 Lookup - LKP_users.csv (106 rows)"
+      - name: src_employee_input
+        description: "UC2 Source - employee_input.csv (50 rows)"
+      - name: src_contact
+        description: "UC3/UC7 Source - src_contact.csv (40 rows)"
+      - name: src_emp_v3
+        description: "UC4 Source - Source_EMP_V3 (30 rows)"
+      - name: tgt_scd2_nks
+        description: "UC4 Lookup/Target - TGT_SCD2_NKS existing target (20 rows)"
+      - name: src_hierarchy_xml
+        description: "UC5 Source - List_file_xml_San.txt hierarchy (25 rows)"
+      - name: src_structure_xml
+        description: "UC6 Source - List_file_xml_San.txt structure (25 rows)"
+      - name: src_employee_data
+        description: "UC8 Source - src_employee_data.csv (60 rows)"
+      - name: src_employees_distorted
+        description: "UC9 Source - SRC_EmployeesDistortedData.csv (45 rows)"
+      - name: src_employee_mapping
+        description: "UC10 Source - employee_mapping.csv (55 rows)"
+      - name: lkp_departments
+        description: "UC10 Lookup - department.csv (5 rows)"
