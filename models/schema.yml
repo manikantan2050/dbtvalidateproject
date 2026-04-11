@@ -2,12 +2,10 @@ version: 2
 
 models:
   - name: joiner_lookup_m_joiner_lkp
-    description: "Joiner + Lookup Enrichment - m_joiner_lkp"
-    config:
-      tags: ['jinjaneering', 'joiner_lookup']
+    description: "Joiner + Lookup enrichment model for PROJECT10 m_joiner_lkp mapping"
     columns:
       - name: order_id
-        description: "Order identifier from primary source"
+        description: "Primary order identifier from source_2 (src_users)"
         tests:
           - not_null
       - name: customer_id
@@ -20,20 +18,16 @@ models:
         description: "Salesman identifier"
       - name: order_date
         description: "Order date"
-      - name: s2_order_id
-        description: "Order ID from secondary source"
-      - name: s2_customer_id
-        description: "Customer ID from secondary source"
-      - name: s2_status
-        description: "Status from secondary source"
-      - name: s2_salesman_id
-        description: "Salesman ID from secondary source"
-      - name: s2_order_date
-        description: "Order date from secondary source"
-      - name: s2_auditrunddate
-        description: "Audit run date from secondary source (double-d spelling)"
+      - name: auditrunddate
+        description: "Audit run date from src_users"
+      - name: src1_order_id
+        description: "Matched order_id from src_employees (null if no match)"
       - name: lkp_order_id
-        description: "Order ID from lookup table"
+        description: "Lookup order_id from lkp_users"
+      - name: lkp_customer_id
+        description: "Lookup customer_id from lkp_users"
+      - name: lkp_status
+        description: "Lookup status from lkp_users"
       - name: etl_load_dts
         description: "ETL load timestamp"
         tests:
