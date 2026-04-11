@@ -2,32 +2,32 @@ version: 2
 
 sources:
   - name: source_db
-    description: "Neon PostgreSQL warehouse for IICS migration - all 10 use cases"
+    description: "Neon PostgreSQL warehouse - IICS migration real data"
     schema: public
     tables:
       - name: src_employees
-        description: "UC1 Source (Master) - SRC_employees.csv (88 rows)"
+        description: "UC1 Source (Master) - SRC_employees.csv (87 rows)"
       - name: src_users
-        description: "UC1 Source (Detail) - SRC_users.csv (106 rows)"
+        description: "UC1 Source (Detail) - SRC_users.csv (105 rows)"
       - name: lkp_users
-        description: "UC1 Lookup - LKP_users.csv (106 rows)"
+        description: "UC1 Lookup - LKP_users.csv (105 rows)"
       - name: src_employee_input
-        description: "UC2 Source - employee_input.csv (50 rows)"
+        description: "UC2 Source - employee_input.csv (2000 rows)"
       - name: src_contact
-        description: "UC3/UC7 Source - src_contact.csv (40 rows)"
+        description: "UC3/UC7 Source - src_contact.csv (not uploaded - 0 rows)"
       - name: src_emp_v3
-        description: "UC4 Source - Source_EMP_V3 (30 rows)"
+        description: "UC4 Source - Source_EMP_V3 Oracle (not uploaded - 0 rows)"
       - name: tgt_scd2_nks
-        description: "UC4 Lookup/Target - TGT_SCD2_NKS existing target (20 rows)"
+        description: "UC4 Lookup/Target - TGT_SCD2_NKS Oracle (not uploaded - 0 rows)"
       - name: src_hierarchy_xml
-        description: "UC5 Source - List_file_xml_San.txt hierarchy (25 rows)"
+        description: "UC5 Source - List_file_xml_San.txt (not uploaded - 0 rows)"
       - name: src_structure_xml
-        description: "UC6 Source - List_file_xml_San.txt structure (25 rows)"
+        description: "UC6 Source - List_file_xml_San.txt (not uploaded - 0 rows)"
       - name: src_employee_data
-        description: "UC8 Source - src_employee_data.csv (60 rows)"
+        description: "UC8 Source - src_employee_data.csv (not uploaded - 0 rows)"
       - name: src_employees_distorted
-        description: "UC9 Source - SRC_EmployeesDistortedData.csv (45 rows)"
+        description: "UC9 Source - SRC_EmployeesDistortedData.csv (not uploaded - 0 rows)"
       - name: src_employee_mapping
-        description: "UC10 Source - employee_mapping.csv (55 rows)"
+        description: "UC10 Source - employee_mapping.csv (2000 rows)"
       - name: lkp_departments
-        description: "UC10 Lookup - department.csv (5 rows)"
+        description: "UC10 Lookup - department.csv (10 rows)"
