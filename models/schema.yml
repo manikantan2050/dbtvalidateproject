@@ -1,41 +1,40 @@
 version: 2
 
-  models:
-    - name: joiner_lookup_m_joiner_lkp
-      description: "Joiner + Lookup Enrichment - m_joiner_lkp - Joins src_employees with src_users and enriches via lkp_users lookup"
-      config:
-        tags: ['jinjaneering', 'joiner_lookup']
-      columns:
-        - name: order_id
-          description: "Order identifier from primary source"
-          tests:
-            - not_null
-        - name: customer_id
-          description: "Customer identifier"
-          tests:
-            - not_null
-        - name: status
-          description: "Order status"
-        - name: salesman_id
-          description: "Salesman identifier"
-        - name: order_date
-          description: "Order date"
-        - name: s2_order_id
-          description: "Order ID from secondary source (src_users)"
-        - name: s2_customer_id
-          description: "Customer ID from secondary source"
-        - name: s2_status
-          description: "Status from secondary source"
-        - name: s2_salesman_id
-          description: "Salesman ID from secondary source"
-        - name: s2_order_date
-          description: "Order date from secondary source"
-        - name: s2_auditrundate
-          description: "Audit run date from secondary source"
-        - name: lkp_order_id
-          description: "Order ID from lookup table (lkp_users)"
-        - name: etl_load_dts
-          description: "ETL load timestamp"
-          tests:
-            - not_null
-  
+models:
+  - name: joiner_lookup_m_joiner_lkp
+    description: "Joiner + Lookup Enrichment - m_joiner_lkp"
+    config:
+      tags: ['jinjaneering', 'joiner_lookup']
+    columns:
+      - name: order_id
+        description: "Order identifier from primary source"
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Customer identifier"
+        tests:
+          - not_null
+      - name: status
+        description: "Order status"
+      - name: salesman_id
+        description: "Salesman identifier"
+      - name: order_date
+        description: "Order date"
+      - name: s2_order_id
+        description: "Order ID from secondary source"
+      - name: s2_customer_id
+        description: "Customer ID from secondary source"
+      - name: s2_status
+        description: "Status from secondary source"
+      - name: s2_salesman_id
+        description: "Salesman ID from secondary source"
+      - name: s2_order_date
+        description: "Order date from secondary source"
+      - name: s2_auditrundate
+        description: "Audit run date from secondary source"
+      - name: lkp_order_id
+        description: "Order ID from lookup table"
+      - name: etl_load_dts
+        description: "ETL load timestamp"
+        tests:
+          - not_null
