@@ -1,78 +1,470 @@
 version: 2
-
 models:
+  - name: stg_incremental_m_mass_ingestion
+    description: "Incremental Staging Load - M_Mass_Ingestion - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']
+    columns:
+      - name: employee_id
+        description: "Field employee_id"
+
+      - name: first_name
+        description: "Field first_name"
+
+      - name: last_name
+        description: "Field last_name"
+
+      - name: department
+        description: "Field department"
+
+      - name: job_title
+        description: "Field job_title"
+
+      - name: region
+        description: "Field region"
+
+      - name: base_salary
+        description: "Field base_salary"
+
+      - name: bonus_amount
+        description: "Field bonus_amount"
+
+      - name: hire_date
+        description: "Field hire_date"
+
+      - name: status
+        description: "Field status"
+
+      - name: performance_rating
+        description: "Field performance_rating"
+
+      - name: manager_id
+        description: "Field manager_id"
+
+      - name: Full_Name
+        description: "Field Full_Name"
+
+      - name: Annual_salary
+        description: "Field Annual_salary"
+
+
+  - name: stg_incremental_m_dynamic_mapping_task
+    description: "Incremental Staging Load - m_Dynamic_Mapping_Task - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']
+    columns:
+      - name: ID
+        description: "Field ID"
+
+      - name: FIRSTNAME
+        description: "Field FIRSTNAME"
+
+      - name: LASTNAME
+        description: "Field LASTNAME"
+
+      - name: HOMEPHONE
+        description: "Field HOMEPHONE"
+
+      - name: CELLPHONE
+        description: "Field CELLPHONE"
+
+      - name: WORKPHONE
+        description: "Field WORKPHONE"
+
+      - name: FULL_NAME
+        description: "Field FULL_NAME"
+
+
+  - name: stg_incremental_mplt_quaterlysal
+    description: "Incremental Staging Load - mplt_QuaterlySal - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']
+    columns:
+      - name: Quarterly_Salary
+        description: "Field Quarterly_Salary"
+
+      - name: Salary
+        description: "Field Salary"
+
+
+  - name: stg_incremental_m_transactional_control
+    description: "Incremental Staging Load - M_Transactional_Control - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']
+    columns:
+      - name: ID
+        description: "Field ID"
+
+      - name: FIRSTNAME
+        description: "Field FIRSTNAME"
+
+      - name: LASTNAME
+        description: "Field LASTNAME"
+
+      - name: HOMEPHONE
+        description: "Field HOMEPHONE"
+
+      - name: CELLPHONE
+        description: "Field CELLPHONE"
+
+      - name: WORKPHONE
+        description: "Field WORKPHONE"
+
+
+  - name: stg_incremental_m_macroexpression
+    description: "Incremental Staging Load - m_MacroExpression - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'stg_incremental']
+    columns:
+      - name: EMPLOYEE_ID
+        description: "Field EMPLOYEE_ID"
+
+      - name: FIRST_NAME
+        description: "Field FIRST_NAME"
+
+      - name: LAST_NAME
+        description: "Field LAST_NAME"
+
+      - name: EMAIL
+        description: "Field EMAIL"
+
+      - name: PHONE
+        description: "Field PHONE"
+
+      - name: DATE_OF_BIRTH
+        description: "Field DATE_OF_BIRTH"
+
+      - name: HIRE_DATE
+        description: "Field HIRE_DATE"
+
+      - name: DEPARTMENT
+        description: "Field DEPARTMENT"
+
+      - name: JOB_TITLE
+        description: "Field JOB_TITLE"
+
+      - name: SALARY
+        description: "Field SALARY"
+
+      - name: MANAGER_ID
+        description: "Field MANAGER_ID"
+
+      - name: CITY
+        description: "Field CITY"
+
+      - name: STATE
+        description: "Field STATE"
+
+      - name: COUNTRY
+        description: "Field COUNTRY"
+
+      - name: EMPLOYMENT_STATUS
+        description: "Field EMPLOYMENT_STATUS"
+
+      - name: YEARS_OF_EXPERIENCE
+        description: "Field YEARS_OF_EXPERIENCE"
+
+      - name: PERFORMANCE_RATING
+        description: "Field PERFORMANCE_RATING"
+
+      - name: "%AllStringFields%_out"
+        description: "Field %AllStringFields%_out"
+
+
+  - name: complex_multi_target_m_alltransformationmapping
+    description: "Complex Multi-Target Router - m_AllTransformationMapping - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'complex_multi_target']
+    columns:
+      - name: employee_id
+        description: "Field employee_id"
+
+      - name: first_name
+        description: "Field first_name"
+
+      - name: last_name
+        description: "Field last_name"
+
+      - name: email
+        description: "Field email"
+
+      - name: phone
+        description: "Field phone"
+
+      - name: date_of_birth
+        description: "Field date_of_birth"
+
+      - name: hire_date
+        description: "Field hire_date"
+
+      - name: department
+        description: "Field department"
+
+      - name: job_title
+        description: "Field job_title"
+
+      - name: salary
+        description: "Field salary"
+
+      - name: manager_id
+        description: "Field manager_id"
+
+      - name: city
+        description: "Field city"
+
+      - name: state
+        description: "Field state"
+
+      - name: country
+        description: "Field country"
+
+      - name: employment_status
+        description: "Field employment_status"
+
+      - name: years_of_experience
+        description: "Field years_of_experience"
+
+      - name: performance_rating
+        description: "Field performance_rating"
+
+      - name: department_id
+        description: "Field department_id"
+
+      - name: department_name
+        description: "Field department_name"
+
+      - name: Full_Name
+        description: "Field Full_Name"
+
+      - name: Salary_Grade
+        description: "Field Salary_Grade"
+
+      - name: Departement_id
+        description: "Field Departement_id"
+
+      - name: No_of_Days_in_Org
+        description: "Field No_of_Days_in_Org"
+
+      - name: Salary_Dec
+        description: "Field Salary_Dec"
+
+      - name: o_hire_date
+        description: "Field o_hire_date"
+
+      - name: Quarterly_Salary
+        description: "Field Quarterly_Salary"
+
+      - name: Agg_Salary
+        description: "Field Agg_Salary"
+
+
+  - name: complex_multi_target_m_scd_type2
+    description: "Complex Multi-Target Router - m_SCD_Type2 - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'complex_multi_target']
+    columns:
+      - name: EMP_S_KEY
+        description: "Field EMP_S_KEY"
+
+      - name: EMP_ID
+        description: "Field EMP_ID"
+
+      - name: FIRST_NAME
+        description: "Field FIRST_NAME"
+
+      - name: LAST_NAME
+        description: "Field LAST_NAME"
+
+      - name: EMAIL
+        description: "Field EMAIL"
+
+      - name: GENDER
+        description: "Field GENDER"
+
+      - name: SALARY
+        description: "Field SALARY"
+
+      - name: DEPT_ID
+        description: "Field DEPT_ID"
+
+      - name: CHECKSUM
+        description: "Field CHECKSUM"
+
+      - name: INSERT_DTTM
+        description: "Field INSERT_DTTM"
+
+      - name: START_DATE
+        description: "Field START_DATE"
+
+      - name: END_DATE
+        description: "Field END_DATE"
+
+
+  - name: fact_aggregation_m_decode_agg
+    description: "Fact Aggregation - m_decode_agg - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'fact_aggregation']
+    columns:
+      - name: employee_id
+        description: "Field employee_id"
+
+      - name: first_name
+        description: "Field first_name"
+
+      - name: last_name
+        description: "Field last_name"
+
+      - name: email
+        description: "Field email"
+
+      - name: phone
+        description: "Field phone"
+
+      - name: date_of_birth
+        description: "Field date_of_birth"
+
+      - name: hire_date
+        description: "Field hire_date"
+
+      - name: department
+        description: "Field department"
+
+      - name: job_title
+        description: "Field job_title"
+
+      - name: salary
+        description: "Field salary"
+
+      - name: manager_id
+        description: "Field manager_id"
+
+      - name: city
+        description: "Field city"
+
+      - name: state
+        description: "Field state"
+
+      - name: country
+        description: "Field country"
+
+      - name: employment_status
+        description: "Field employment_status"
+
+      - name: years_of_experience
+        description: "Field years_of_experience"
+
+      - name: performance_rating
+        description: "Field performance_rating"
+
+      - name: Updated_Salary
+        description: "Field Updated_Salary"
+
+      - name: o_Rating
+        description: "Field o_Rating"
+
+      - name: o_Salary
+        description: "Field o_Salary"
+
+      - name: o_PerformanceRating
+        description: "Field o_PerformanceRating"
+
+
   - name: joiner_lookup_m_joiner_lkp
-    description: "UC1: Joiner(INNER JOIN src_employees+src_users) + Lookup(lkp_users->AuditRunDate) -> Tgt_Employees"
+    description: "Joiner + Lookup Enrichment - m_joiner_lkp - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'joiner_lookup']
     columns:
-      - name: order_id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: ORDER_ID
+        description: "Field ORDER_ID"
 
-  - name: fact_agg_m_decode_agg
-    description: "UC2: Decode expression + Conditional Aggregation(Avg rating) from employee_input"
-    columns:
-      - name: employee_id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: CUSTOMER_ID
+        description: "Field CUSTOMER_ID"
 
-  - name: stg_m_dynamic_mapping_task
-    description: "UC3: Dynamic mapping with Expression(FULL_NAME) from src_contact"
-    columns:
-      - name: id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: STATUS
+        description: "Field STATUS"
 
-  - name: scd2_m_scd_type2
-    description: "UC4: SCD Type 2 with Lookup+MD5 checksum+Router(INSERT/UPDATE) from src_emp_v3"
-    columns:
-      - name: emp_id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: SALESMAN_ID
+        description: "Field SALESMAN_ID"
 
-  - name: joiner_m_hierarchyparser
-    description: "UC5: Hierarchy Parser + Joiner(self-join FK->PK) from XML hierarchy"
-    columns:
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: ORDER_DATE
+        description: "Field ORDER_DATE"
 
-  - name: joiner_m_intelligent_sm
-    description: "UC6: Intelligent Structure Model + Joiner from XML structure"
-    columns:
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: AuditRunDate
+        description: "Field AuditRunDate"
 
-  - name: stg_m_transactional_control
-    description: "UC7: Transaction Control transformation from src_contact"
-    columns:
-      - name: id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
 
-  - name: stg_m_mass_ingestion
-    description: "UC8: Mass Ingestion with Expression(Full_Name, Annual_salary) + Filter(Active)"
+  - name: joiner_lookup_m_hierarchyparser
+    description: "Joiner + Lookup Enrichment - m_hierarchyparser - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'joiner_lookup']
     columns:
-      - name: employee_id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: FK_BOOK
+        description: "Field FK_BOOK"
 
-  - name: stg_m_macroexpression
-    description: "UC9: Macro Expression sort/clean from SRC_EmployeesDistortedData"
-    columns:
-      - name: employee_id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: AUTHOR
+        description: "Field AUTHOR"
 
-  - name: complex_m_alltransformationmapping
-    description: "UC10: All transforms combined - Aggregator, Mapplet, Expression, Filter, Lookup, Router, Sequence, Sorter"
+      - name: PK_BOOK
+        description: "Field PK_BOOK"
+
+      - name: CATEGORY
+        description: "Field CATEGORY"
+
+      - name: COVER
+        description: "Field COVER"
+
+      - name: TITLE
+        description: "Field TITLE"
+
+      - name: LANG
+        description: "Field LANG"
+
+      - name: YEAR
+        description: "Field YEAR"
+
+      - name: PRICE
+        description: "Field PRICE"
+
+      - name: FIELD1
+        description: "Field FIELD1"
+
+
+  - name: joiner_lookup_m_intelligent_sm
+    description: "Joiner + Lookup Enrichment - m_Intelligent_sm - Jinjaneering generated pattern model"
+    config:
+      tags: ['jinjaneering', 'joiner_lookup']
     columns:
-      - name: employee_id
-        tests: [not_null]
-      - name: etl_load_dts
-        tests: [not_null]
+      - name: Path
+        description: "Field Path"
+
+      - name: unidentified
+        description: "Field unidentified"
+
+      - name: book_PK
+        description: "Field book_PK"
+
+      - name: category
+        description: "Field category"
+
+      - name: cover
+        description: "Field cover"
+
+      - name: lang
+        description: "Field lang"
+
+      - name: title
+        description: "Field title"
+
+      - name: year
+        description: "Field year"
+
+      - name: price
+        description: "Field price"
+
+      - name: author
+        description: "Field author"
+
+      - name: book_FK
+        description: "Field book_FK"
+
+
