@@ -2,32 +2,24 @@ version: 2
 
 models:
   - name: joiner_lookup_m_joiner_lkp
-    description: "Joiner + Lookup enrichment view for PROJECT10 m_joiner_lkp mapping"
+    description: "IICS m_joiner_lkp: Joiner(INNER JOIN src_employees + src_users) + Lookup(lkp_users -> AuditRunDate) -> Tgt_Employees"
     columns:
       - name: order_id
-        description: "Primary order identifier from src_users"
+        description: "Primary key from Source (src_employees master)"
         tests:
           - not_null
       - name: customer_id
-        description: "Customer identifier"
+        description: "Customer identifier from joined sources"
         tests:
           - not_null
       - name: status
-        description: "Order status"
+        description: "Order status from joined sources"
       - name: salesman_id
-        description: "Salesman identifier"
+        description: "Salesman identifier from joined sources"
       - name: order_date
-        description: "Order date"
-      - name: auditrunddate
-        description: "Audit run date from src_users"
-      - name: src1_order_id
-        description: "Matched order_id from src_employees (null if no match)"
-      - name: lkp_order_id
-        description: "Lookup order_id from lkp_users"
-      - name: lkp_customer_id
-        description: "Lookup customer_id from lkp_users"
-      - name: lkp_status
-        description: "Lookup status from lkp_users"
+        description: "Order date from joined sources"
+      - name: auditrundate
+        description: "AuditRunDate enriched via Lookup from lkp_users"
       - name: etl_load_dts
         description: "ETL load timestamp"
         tests:
