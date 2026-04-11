@@ -1,14 +1,18 @@
--- Test: joiner_lookup_m_joiner_lkp join integrity
-  -- Validates that the join between src_employees and src_users produces matching records
-  -- and that the lookup enrichment from lkp_users works correctly.
-  -- Returns rows only on failure (dbt test convention: HAVING count(*) = 0 means pass)
+-- Test: Verify joiner_lookup_m_joiner_lkp join integrity
+-- Ensures all source_2 records are preserved (LEFT JOIN)
+-- and lookup enrichment is applied
 
-  select
-      'join_integrity' as test_name,
-      count(*) as total_rows,
-      count(s2_order_id) as joined_rows,
-      count(case when order_id is null then 1 end) as null_pk_count
-  from {{ ref('joiner_lookup_m_joiner_lkp') }}
-  having count(*) = 0
-     or count(case when order_id is null then 1 end) > 0
-  
+with validation as (
+    select
+        count(*) as total_rows,
+        count(order_id) as non_null_orders,
+        count(lkp_order_id) as lookup_matches,
+        count(src1_order_id) as src1_matches
+    from {{ ref('joiner_lookup_m_joiner_lkp') }}
+)
+
+select *
+from validation
+where total_rows < 100
+   or non_null_orders != total_rows
+   or lookup_matches < total_rows * 0.9
